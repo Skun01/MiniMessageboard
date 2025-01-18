@@ -22,7 +22,7 @@ app.use('/', indexRouter)
 //   res.render('index', {title: "Mini Messageboard", messages: messages})
 // })
 
-const PORT = 3000;
+const PORT = 8080;
 
 app.listen(PORT, ()=>{
   console.log('my server is running...');
