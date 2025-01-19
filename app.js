@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('node:path');
 const indexRouter = require('./routes/indexRoute')
-
+require('dotenv').config();
 
 const app = express();
 
@@ -18,9 +18,6 @@ app.set('view engine', 'ejs')
 
 // middleware func
 app.use('/', indexRouter)
-// app.get('/', (req, res)=>{
-//   res.render('index', {title: "Mini Messageboard", messages: messages})
-// })
 
 const PORT = 8080;
 

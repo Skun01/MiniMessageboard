@@ -1,4 +1,5 @@
 const {Router} = require('express');
+const messageController = require('../controllers/messageController');
 const indexRouter = Router();
 
 //here is the data
@@ -16,19 +17,8 @@ const messages = [
 ];
 
 // router 
-indexRouter.get('/', (req, res)=>{
-  res.render('index', {title: "Mini Messageboard", messages: messages})
-})
-
-indexRouter.get('/new', (req, res)=>{
-  res.render('myForm', {title: 'New message'})
-})
-
-indexRouter.post('/new', (req, res)=>{
-  const {messageText, messageUser} = req.body;
-  messages.push({ text: messageText, user: messageUser, added: new Date() });
-  // use this to redirect to default page
-  res.redirect('/');
-})
-
+indexRouter.get('/', messageController.getAllMessagesGet);
+indexRouter.get('/new', messageController.insertMessageGet)
+indexRouter.post('/new', messageController.insertMessagePost);
+indexRouter.post('/delete/:id', messageController.deleteMessagePost);
 module.exports = indexRouter;
